@@ -6,7 +6,6 @@
         "You\'ve got to know when to hold them, fold them and just run.",
         "I can do all things when all things leave me alone.",
     ];
-    
     let sentIndex = 0;
     let letterIndex = 0;
     let currentSentence = sentences[sentIndex];
@@ -16,5 +15,25 @@
     $("#target-letter").text(currentLetter);
     $("#keyboard-upper-container").hide();
 
+    $(document).keydown(function(shift) {
+        if(shift.keyCode === 16) {
+            $('#keyboard-upper-container').show();
+            $('#keyboard-lower-container').hide();
+        }
+    });
+    
+    $(document).keyup(function(shift) {
+        $('.highlight').removeClass('hightlight');
+        if(shift.keyCode === 16) {
+            $('#keyboard-upper-container').hide();
+            $('#keyboard-lower-container').show();
+        }
+    });
+
+    $(document).keypress(function(e) {
+            $('#' + e.keyCode).css('background-color', 'yellow');
+    });
+
+   
 // })
 
